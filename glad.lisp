@@ -16,5 +16,7 @@
 
 (use-foreign-library libglad)
 
+(cffi:defcfun ("gladLoadGL" load-glad) :int)
+
 (defun init ()
-  (assert (/= 0 (cffi:foreign-funcall "gladLoadGL" :int)) nil "Loading GLAD failed"))
+  (assert (/= 0 (load-glad)) nil "Loading GLAD failed"))
