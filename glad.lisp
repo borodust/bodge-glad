@@ -1,20 +1,14 @@
-(in-package :bodge-glad.def)
-
-(defpackage :glad
+(cl:defpackage :glad
   (:use :cl :cffi)
-  (:export init))
-
+  (:export libglad
+           init))
 (in-package :glad)
 
-
 (define-foreign-library (libglad
-                         :search-path (asdf:component-pathname
-                                       (asdf:find-system :bodge-glad)))
-  (:darwin "libglad.dylib")
-  (:unix "libglad.so")
-  (:windows "libglad.dll"))
-
-(use-foreign-library libglad)
+                         :search-path (asdf:system-relative-pathname :bodge-glad))
+  (:darwin "libglad.dylib.bodged")
+  (:unix "libglad.so.bodged")
+  (:windows "libglad.dll.bodged"))
 
 (cffi:defcfun ("gladLoadGL" load-glad) :int)
 

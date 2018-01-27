@@ -1,21 +1,21 @@
 BIN = libglad
 
 # Flags
-CFLAGS =  -fPIC -O2 -Iglad/include
+CFLAGS += -fPIC -O2 -Iglad/include
 
 SRC = glad/src/glad.c
 OBJ = $(SRC:.c=.o)
 
 ifeq ($(OS),Windows_NT)
-	BIN := $(BIN).dll
+	BIN := $(BIN).dll.bodged
 	LIBS =
 else
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S),Darwin)
-		BIN := $(BIN).dylib
+		BIN := $(BIN).dylib.bodged
 		LIBS = -ldl
 	else
-		BIN := $(BIN).so
+		BIN := $(BIN).so.bodged
 		LIBS = -ldl
 	endif
 endif
