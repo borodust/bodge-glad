@@ -9,6 +9,7 @@ OBJ = $(SRC:.c=.o)
 ifeq ($(OS),Windows_NT)
 	BIN := $(BIN).dll.bodged
 	LIBS =
+	CFLAGS += -Wl,-soname,$(BIN)
 else
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S),Darwin)
@@ -18,6 +19,7 @@ else
 	else
 		BIN := $(BIN).so.bodged
 		LIBS = -ldl
+		CFLAGS += -Wl,-soname,$(BIN)
 	endif
 endif
 
