@@ -14,6 +14,7 @@ else
 	ifeq ($(UNAME_S),Darwin)
 		BIN := $(BIN).dylib.bodged
 		LIBS = -ldl
+		CFLAGS += -install_name '@loader_path/$(BIN)'
 	else
 		BIN := $(BIN).so.bodged
 		LIBS = -ldl
