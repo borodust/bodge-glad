@@ -5,7 +5,7 @@
 (in-package :glad)
 
 (define-foreign-library (libglad
-                         :search-path (asdf:system-relative-pathname :bodge-glad))
+                         :search-path (asdf:system-relative-pathname :bodge-glad "."))
   (:darwin "libglad.dylib.bodged")
   (:unix "libglad.so.bodged")
   (:windows "libglad.dll.bodged"))
