@@ -2,7 +2,7 @@
   (:use :cl :cffi)
   (:export libglad
            init))
-(in-package :glad)
+(cl:in-package :glad)
 
 (define-foreign-library (libglad
                          :search-path (asdf:system-relative-pathname :bodge-glad "."))
